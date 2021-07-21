@@ -2,12 +2,7 @@
 #include <string.h>
 #include <locale.h>
 
-void chuta();
-int jachutou(char);
-void desenhaforca();
-void escolhepalavra();
-int acertou();
-int enforcou();
+#include "forca.h"
 
 char palavrasecreta[20];
 char chutes[26];
