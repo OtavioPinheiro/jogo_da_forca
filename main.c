@@ -2,9 +2,16 @@
 #include <string.h>
 #include <locale.h>
 
+void chuta();
+int jachutou(char);
+void desenhaforca();
+void escolhepalavra();
+int acertou();
+int enforcou();
+
 char palavrasecreta[20];
 char chutes[26];
-int tentativas = 0;
+int chutesdados = 0;
 
 void abertura() {
     printf("*****************\n");
@@ -17,12 +24,12 @@ void chuta() {
     printf("Qual letra?\n");
     scanf(" %c", &chute);
 
-    chutes[tentativas] = chute;
+    chutes[chutesdados] = chute;
 }
 
 int jachutou(char letra) {
     int achou = 0;
-    for (int i = 0; i < tentativas; ++i) {
+    for (int i = 0; i < chutesdados; ++i) {
         if(chutes[i] == letra) {
             achou = 1;
             break;
@@ -33,7 +40,7 @@ int jachutou(char letra) {
 }
 
 void desenhaforca() {
-    printf("Voce ja deu %d chutes\n", tentativas);
+    printf("Voce ja deu %d chutes\n", chutesdados);
 
     for (int i = 0; i < strlen(palavrasecreta); ++i) {
         if(jachutou(palavrasecreta[i])) {
@@ -49,9 +56,37 @@ void escolhepalavra() {
     sprintf(palavrasecreta, "MELANCIA");
 }
 
+int acertou() {
+    for (int i = 0; i < strlen(palavrasecreta); ++i) {
+        if(!jachutou(palavrasecreta[i])) {
+            return  0;
+        }
+    }
+
+    return 1;
+}
+
+int enforcou() {
+    
+    int erros = 0;
+
+    for (int i = 0; i < chutesdados; ++i) {
+        int existe = 0;
+
+        for (int j = 0; j < strlen(palavrasecreta); ++j) {
+            if(chutes[i] == palavrasecreta[j]) {
+                existe = 1;
+                break;
+            }
+        }
+
+        if(!existe) erros++;
+    }
+
+    return erros >= 5;
+}
+
 int main() {
-    int acertou = 0;
-    int enforcou = 0;
 
 //    setlocale(LC_ALL, "PORTUGUESE"); not work on CLion!!
 
@@ -61,6 +96,6 @@ int main() {
     do {
         desenhaforca();
         chuta();
-        tentativas++;
-    } while (!acertou && !enforcou);
+        chutesdados++;
+    } while (!acertou() && !enforcou());
 }
