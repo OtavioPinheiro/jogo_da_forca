@@ -39,6 +39,8 @@ void desenhaforca() {
 
     int erros = chuteserrados();
 
+    printf("Tentativas: %d\n", 5 - erros);
+
     printf("  _______       \n");
     printf(" |/      |      \n");
     printf(" |      %c%c%c  \n", (erros>=1?'(':' '),
@@ -51,7 +53,6 @@ void desenhaforca() {
     printf(" |              \n");
     printf("_|___           \n");
     printf("\n\n");
-
 
     for (int i = 0; i < strlen(palavrasecreta); i++) {
         if(jachutou(palavrasecreta[i])) {
@@ -161,6 +162,7 @@ int main() {
     } while (!acertou() && !enforcou());
 
     if(acertou()) {
+        desenhaforca();
         printf("\nParabéns, você ganhou!\n\n");
 
         printf("       ___________      \n");
@@ -174,6 +176,7 @@ int main() {
         printf("         _.' '._        \n");
         printf("        '-------'       \n\n");
     } else {
+        desenhaforca();
         printf("\nPuxa vida! Voce foi enforcado!\n");
         printf("A palavra era **%s**\n\n", palavrasecreta);
 
