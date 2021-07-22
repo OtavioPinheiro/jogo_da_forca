@@ -40,16 +40,14 @@ char* exibeBonecoSeMaiorQue(int erros, int qtde, char* parteBoneco) {
 }
 
 void desenhaforca() {
-    int erros = chuteserrados();
-
     char boneco[6] = "";
 
-    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 4, "(_)|\\/"));
-    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 3, "(_)|\\/"));
-    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 2, "(_)|  "));
-    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 1, "(_)   "));
+    strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 4, "(_)|\\/"));
+    strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 3, "(_)|\\/"));
+    strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 2, "(_)|  "));
+    strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 1, "(_)   "));
 
-    printf("Erros: %d, Boneco: %s\n\n", erros, boneco);
+    printf("Erros: %d, Boneco: %s\n\n", chuteserrados(), boneco);
 
     printf("  _______      \n");
     printf(" |/      |     \n");
