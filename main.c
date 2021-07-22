@@ -6,7 +6,7 @@
 
 #include "forca.h"
 
-char palavrasecreta[20];
+char palavrasecreta[TAMANHO_PALAVRA];
 char chutes[26];
 int chutesdados = 0;
 
@@ -26,7 +26,7 @@ void chuta() {
 
 int jachutou(char letra) {
     int achou = 0;
-    for (int i = 0; i < chutesdados; ++i) {
+    for (int i = 0; i < chutesdados; i++) {
         if(chutes[i] == letra) {
             achou = 1;
             break;
@@ -36,10 +36,32 @@ int jachutou(char letra) {
     return achou;
 }
 
-void desenhaforca() {
-    printf("Voce ja deu %d chutes\n", chutesdados);
+char* exibeBonecoSeMaiorQue(int erros, int chutes, char* parteBoneco) {
+    return erros >= chutes ? parteBoneco : "      ";
+}
 
-    for (int i = 0; i < strlen(palavrasecreta); ++i) {
+void desenhaforca() {
+    int erros = chuteserrados();
+
+    char boneco[6] = "";
+
+    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 4, "(_)|\\/"));
+    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 3, "(_)|\\/"));
+    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 2, "(_)|"));
+    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 1, "(_)"));
+
+    printf("  _______      \n");
+    printf(" |/      |     \n");
+    printf(" |      %c%c%c \n", boneco[0], boneco[1], boneco[2]);
+    printf(" |      %c%c%c \n", boneco[4], boneco[3], boneco[5]);
+    printf(" |       %c    \n", boneco[3]);
+    printf(" |      %c %c  \n", boneco[5], boneco[4]);
+    printf(" |             \n");
+    printf("_|___          \n");
+    printf("\n\n");
+
+
+    for (int i = 0; i < strlen(palavrasecreta); i++) {
         if(jachutou(palavrasecreta[i])) {
             printf("%c ", palavrasecreta[i]);
         } else {
@@ -55,7 +77,7 @@ void adicionapalavra() {
     scanf(" %c", &quer);
 
     if(quer == 'S') {
-        char novapalavra[20];
+        char novapalavra[TAMANHO_PALAVRA];
         printf("Qual a palavra nova? ");
         scanf("%s", novapalavra);
 
@@ -93,7 +115,7 @@ void escolhepalavra() {
     srand(time(0));
     int randomico = rand() % qtdepalavras;
 
-    for (int i = 0; i <= randomico ; ++i) {
+    for (int i = 0; i <= randomico ; i++) {
         fscanf(f, "%s", palavrasecreta);
     }
 
@@ -101,7 +123,7 @@ void escolhepalavra() {
 }
 
 int acertou() {
-    for (int i = 0; i < strlen(palavrasecreta); ++i) {
+    for (int i = 0; i < strlen(palavrasecreta); i++) {
         if(!jachutou(palavrasecreta[i])) {
             return  0;
         }
@@ -109,14 +131,14 @@ int acertou() {
     return 1;
 }
 
-int enforcou() {
+int chuteserrados() {
     
     int erros = 0;
 
-    for (int i = 0; i < chutesdados; ++i) {
+    for (int i = 0; i < chutesdados; i++) {
         int existe = 0;
 
-        for (int j = 0; j < strlen(palavrasecreta); ++j) {
+        for (int j = 0; j < strlen(palavrasecreta); j++) {
             if(chutes[i] == palavrasecreta[j]) {
                 existe = 1;
                 break;
@@ -126,7 +148,11 @@ int enforcou() {
         if(!existe) erros++;
     }
 
-    return erros >= 5;
+    return erros;
+}
+
+int enforcou() {
+    chuteserrados() >= 5;
 }
 
 int main() {
@@ -142,5 +168,38 @@ int main() {
         chutesdados++;
     } while (!acertou() && !enforcou());
 
-    adicionapalavra();
+    if(acertou()) {
+        printf("\nParabéns, você ganhou!\n\n");
+
+        printf("       ___________      \n");
+        printf("      '._==_==_=_.'     \n");
+        printf("      .-\\:      /-.    \n");
+        printf("     | (|:.     |) |    \n");
+        printf("      '-|:.     |-'     \n");
+        printf("        \\::.    /      \n");
+        printf("         '::. .'        \n");
+        printf("           ) (          \n");
+        printf("         _.' '._        \n");
+        printf("        '-------'       \n\n");
+    } else {
+        printf("\nPuxa vida! Voce foi enforcado!\n");
+        printf("A palavra era **%s**\n\n", palavrasecreta);
+
+        printf("    _______________         \n");
+        printf("   /               \\       \n");
+        printf("  /                 \\      \n");
+        printf("//                   \\/\\  \n");
+        printf("\\|   XXXX     XXXX   | /   \n");
+        printf(" |   XXXX     XXXX   |/     \n");
+        printf(" |   XXX       XXX   |      \n");
+        printf(" |                   |      \n");
+        printf(" \\__      XXX      __/     \n");
+        printf("   |\\     XXX     /|       \n");
+        printf("   | |           | |        \n");
+        printf("   | I I I I I I I |        \n");
+        printf("   |  I I I I I I  |        \n");
+        printf("   \\_             _/       \n");
+        printf("     \\_         _/         \n");
+        printf("       \\_______/           \n");
+    }
 }
