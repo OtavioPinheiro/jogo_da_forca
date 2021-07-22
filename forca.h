@@ -9,5 +9,5 @@ void escolhepalavra();
 int acertou();
 int enforcou();
 int chuteserrados();
-char* exibeBonecoSeMaiorQue(int erros, int chutes, char* parteBoneco);
+char* exibeBonecoSeMaiorQue(int erros, int qtde, char* parteBoneco);
 #endif //JOGO_DA_FORCA_FORCA_H

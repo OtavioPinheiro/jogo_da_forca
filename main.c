@@ -32,12 +32,11 @@ int jachutou(char letra) {
             break;
         }
     }
-
     return achou;
 }
 
-char* exibeBonecoSeMaiorQue(int erros, int chutes, char* parteBoneco) {
-    return erros >= chutes ? parteBoneco : "      ";
+char* exibeBonecoSeMaiorQue(int erros, int qtde, char* parteBoneco) {
+    return erros >= qtde ? parteBoneco : "      ";
 }
 
 void desenhaforca() {
@@ -47,8 +46,10 @@ void desenhaforca() {
 
     strcpy(boneco, exibeBonecoSeMaiorQue(erros, 4, "(_)|\\/"));
     strcpy(boneco, exibeBonecoSeMaiorQue(erros, 3, "(_)|\\/"));
-    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 2, "(_)|"));
-    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 1, "(_)"));
+    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 2, "(_)|  "));
+    strcpy(boneco, exibeBonecoSeMaiorQue(erros, 1, "(_)   "));
+
+    printf("Erros: %d, Boneco: %s\n\n", erros, boneco);
 
     printf("  _______      \n");
     printf(" |/      |     \n");
@@ -152,7 +153,7 @@ int chuteserrados() {
 }
 
 int enforcou() {
-    chuteserrados() >= 5;
+    return chuteserrados() >= 5;
 }
 
 int main() {
