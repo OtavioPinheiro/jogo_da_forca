@@ -3,6 +3,7 @@
 void chuta();
 int jachutou(char letra);
 void desenhaforca();
+void adicionapalavra();
 void escolhepalavra();
 int acertou();
 int enforcou();
