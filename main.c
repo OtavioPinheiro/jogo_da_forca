@@ -35,41 +35,21 @@ int jachutou(char letra) {
     return achou;
 }
 
-char* exibeBonecoSeMaiorQue(int erros, int qtde, char* parteBoneco) {
-    return erros >= qtde ? parteBoneco : "        ";
-}
-
 void desenhaforca() {
+
     int erros = chuteserrados();
-    char boneco[8] = "";
 
-    switch (erros) {
-        case 1:
-            strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 1, "(_)     "));
-            break;
-        case 2:
-            strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 2, "(_)|    "));
-            break;
-        case 3:
-            strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 3, "(_)|\\/  "));
-            break;
-        case 4:
-            strcpy(boneco, exibeBonecoSeMaiorQue(chuteserrados(), 4, "(_)|\\/\\/"));
-            break;
-        default:
-            break;
-    }
-
-    printf("Erros: %d, Boneco: %s\n", erros, boneco);
-
-    printf("  _______      \n");
-    printf(" |/      |     \n");
-    printf(" |      %c%c%c \n", boneco[0], boneco[1], boneco[2]);
-    printf(" |      %c%c%c \n", boneco[4], boneco[3], boneco[5]);
-    printf(" |       %c    \n", boneco[3]);
-    printf(" |      %c %c  \n", boneco[7], boneco[6]);
-    printf(" |             \n");
-    printf("_|___          \n");
+    printf("  _______       \n");
+    printf(" |/      |      \n");
+    printf(" |      %c%c%c  \n", (erros>=1?'(':' '),
+           (erros>=1?'_':' '), (erros>=1?')':' '));
+    printf(" |      %c%c%c  \n", (erros>=3?'\\':' '),
+           (erros>=2?'|':' '), (erros>=3?'/': ' '));
+    printf(" |       %c     \n", (erros>=2?'|':' '));
+    printf(" |      %c %c   \n", (erros>=4?'/':' '),
+           (erros>=4?'\\':' '));
+    printf(" |              \n");
+    printf("_|___           \n");
     printf("\n\n");
 
 
