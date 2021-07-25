@@ -175,6 +175,8 @@ int main() {
         printf("           ) (          \n");
         printf("         _.' '._        \n");
         printf("        '-------'       \n\n");
+
+        adicionapalavra();
     } else {
         desenhaforca();
         printf("\nPuxa vida! Voce foi enforcado!\n");
