@@ -168,50 +168,50 @@ int main() {
     escolhepalavra();
     
     JOGAR_DE_NOVO:
-    do {
-        desenhaforca();
-        chuta();
-        chutesdados++;
-    } while (!acertou() && !enforcou());
+        do {
+            desenhaforca();
+            chuta();
+            chutesdados++;
+        } while (!acertou() && !enforcou());
 
-    if(acertou()) {
-        desenhaforca();
-        printf("\nParabens, voce ganhou!\n");
+        if(acertou()) {
+            desenhaforca();
+            printf("\nParabens, voce ganhou!\n");
 
-        printf("       ___________      \n");
-        printf("      '._==_==_=_.'     \n");
-        printf("      .-\\:      /-.    \n");
-        printf("     | (|:.     |) |    \n");
-        printf("      '-|:.     |-'     \n");
-        printf("        \\::.    /      \n");
-        printf("         '::. .'        \n");
-        printf("           ) (          \n");
-        printf("         _.' '._        \n");
-        printf("        '-------'       \n\n");
+            printf("       ___________      \n");
+            printf("      '._==_==_=_.'     \n");
+            printf("      .-\\:      /-.    \n");
+            printf("     | (|:.     |) |    \n");
+            printf("      '-|:.     |-'     \n");
+            printf("        \\::.    /      \n");
+            printf("         '::. .'        \n");
+            printf("           ) (          \n");
+            printf("         _.' '._        \n");
+            printf("        '-------'       \n\n");
 
-        adicionapalavra();
-    } else {
-        desenhaforca();
-        printf("\nPuxa vida! Voce foi enforcado!\n");
-        printf("A palavra era **%s**\n", palavrasecreta);
+            adicionapalavra();
+        } else {
+            desenhaforca();
+            printf("\nPuxa vida! Voce foi enforcado!\n");
+            printf("A palavra era **%s**\n", palavrasecreta);
 
-        printf("    _______________         \n");
-        printf("   /               \\       \n");
-        printf("  /                 \\      \n");
-        printf("//                   \\/\\  \n");
-        printf("\\|   XXXX     XXXX   | /   \n");
-        printf(" |   XXXX     XXXX   |/     \n");
-        printf(" |   XXX       XXX   |      \n");
-        printf(" |                   |      \n");
-        printf(" \\__      XXX      __/     \n");
-        printf("   |\\     XXX     /|       \n");
-        printf("   | |           | |        \n");
-        printf("   | I I I I I I I |        \n");
-        printf("   |  I I I I I I  |        \n");
-        printf("   \\_             _/       \n");
-        printf("     \\_         _/         \n");
-        printf("       \\_______/           \n");
-    }
+            printf("    _______________         \n");
+            printf("   /               \\       \n");
+            printf("  /                 \\      \n");
+            printf("//                   \\/\\  \n");
+            printf("\\|   XXXX     XXXX   | /   \n");
+            printf(" |   XXXX     XXXX   |/     \n");
+            printf(" |   XXX       XXX   |      \n");
+            printf(" |                   |      \n");
+            printf(" \\__      XXX      __/     \n");
+            printf("   |\\     XXX     /|       \n");
+            printf("   | |           | |        \n");
+            printf("   | I I I I I I I |        \n");
+            printf("   |  I I I I I I  |        \n");
+            printf("   \\_             _/       \n");
+            printf("     \\_         _/         \n");
+            printf("       \\_______/           \n");
+        }
 
     if(jogar_de_novo()) goto JOGAR_DE_NOVO;
 }
