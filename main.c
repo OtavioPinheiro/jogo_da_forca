@@ -163,7 +163,7 @@ int main() {
 
     if(acertou()) {
         desenhaforca();
-        printf("\nParabéns, você ganhou!\n\n");
+        printf("\nParabens, voce ganhou!\n\n");
 
         printf("       ___________      \n");
         printf("      '._==_==_=_.'     \n");
