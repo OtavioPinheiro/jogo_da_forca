@@ -163,7 +163,7 @@ int main() {
 
     if(acertou()) {
         desenhaforca();
-        printf("\nParabens, voce ganhou!\n\n");
+        printf("\nParabens, voce ganhou!\n");
 
         printf("       ___________      \n");
         printf("      '._==_==_=_.'     \n");
@@ -180,7 +180,7 @@ int main() {
     } else {
         desenhaforca();
         printf("\nPuxa vida! Voce foi enforcado!\n");
-        printf("A palavra era **%s**\n\n", palavrasecreta);
+        printf("A palavra era **%s**\n", palavrasecreta);
 
         printf("    _______________         \n");
         printf("   /               \\       \n");
