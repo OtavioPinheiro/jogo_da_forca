@@ -150,13 +150,24 @@ int enforcou() {
     return chuteserrados() >= 5;
 }
 
+int jogar_de_novo() {
+    char escolha;
+    printf("Deseja jogar novamente? (S/N) ");
+    scanf(" %c", escolha);
+    if(toupper(escolha) == 'S'){
+        return 1;
+    }
+    return 0;
+}
+
 int main() {
 
 //    setlocale(LC_ALL, "PORTUGUESE"); not work on CLion!!
 
     abertura();
     escolhepalavra();
-
+    
+    JOGAR_DE_NOVO:
     do {
         desenhaforca();
         chuta();
@@ -201,4 +212,6 @@ int main() {
         printf("     \\_         _/         \n");
         printf("       \\_______/           \n");
     }
+
+    if(jogar_de_novo()) goto JOGAR_DE_NOVO;
 }
