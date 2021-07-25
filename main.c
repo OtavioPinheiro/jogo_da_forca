@@ -3,6 +3,8 @@
 #include <locale.h>
 #include <time.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <ctype.h>
 
 #include "forca.h"
 
@@ -21,7 +23,7 @@ void chuta() {
     printf("Qual letra?\n");
     scanf(" %c", &chute);
 
-    chutes[chutesdados] = chute;
+    chutes[chutesdados] = toupper(chute);
 }
 
 int jachutou(char letra) {
