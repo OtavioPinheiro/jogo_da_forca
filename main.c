@@ -13,6 +13,9 @@ char chutes[26];
 int chutesdados = 0;
 
 void abertura() {
+    strcpy(palavrasecreta, "");
+    strcpy(chutes, "");
+    chutesdados = 0;
     printf("*****************\n");
     printf("* Jogo de Forca *\n");
     printf("*****************\n");
@@ -152,8 +155,8 @@ int enforcou() {
 
 int jogar_de_novo() {
     char escolha;
-    printf("Deseja jogar novamente? (S/N) ");
-    scanf(" %c", escolha);
+    printf("Deseja jogar novamente? (S/N)\n");
+    scanf(" %c", &escolha);
     if(toupper(escolha) == 'S'){
         return 1;
     }
@@ -163,55 +166,54 @@ int jogar_de_novo() {
 int main() {
 
 //    setlocale(LC_ALL, "PORTUGUESE"); not work on CLion!!
-
+    JOGAR:
     abertura();
     escolhepalavra();
-    
-    JOGAR_DE_NOVO:
-        do {
-            desenhaforca();
-            chuta();
-            chutesdados++;
-        } while (!acertou() && !enforcou());
 
-        if(acertou()) {
-            desenhaforca();
-            printf("\nParabens, voce ganhou!\n");
+    do {
+        desenhaforca();
+        chuta();
+        chutesdados++;
+    } while (!acertou() && !enforcou());
 
-            printf("       ___________      \n");
-            printf("      '._==_==_=_.'     \n");
-            printf("      .-\\:      /-.    \n");
-            printf("     | (|:.     |) |    \n");
-            printf("      '-|:.     |-'     \n");
-            printf("        \\::.    /      \n");
-            printf("         '::. .'        \n");
-            printf("           ) (          \n");
-            printf("         _.' '._        \n");
-            printf("        '-------'       \n\n");
+    if(acertou()) {
+        desenhaforca();
+        printf("\nParabens, voce ganhou!\n");
 
-            adicionapalavra();
-        } else {
-            desenhaforca();
-            printf("\nPuxa vida! Voce foi enforcado!\n");
-            printf("A palavra era **%s**\n", palavrasecreta);
+        printf("       ___________      \n");
+        printf("      '._==_==_=_.'     \n");
+        printf("      .-\\:      /-.    \n");
+        printf("     | (|:.     |) |    \n");
+        printf("      '-|:.     |-'     \n");
+        printf("        \\::.    /      \n");
+        printf("         '::. .'        \n");
+        printf("           ) (          \n");
+        printf("         _.' '._        \n");
+        printf("        '-------'       \n\n");
 
-            printf("    _______________         \n");
-            printf("   /               \\       \n");
-            printf("  /                 \\      \n");
-            printf("//                   \\/\\  \n");
-            printf("\\|   XXXX     XXXX   | /   \n");
-            printf(" |   XXXX     XXXX   |/     \n");
-            printf(" |   XXX       XXX   |      \n");
-            printf(" |                   |      \n");
-            printf(" \\__      XXX      __/     \n");
-            printf("   |\\     XXX     /|       \n");
-            printf("   | |           | |        \n");
-            printf("   | I I I I I I I |        \n");
-            printf("   |  I I I I I I  |        \n");
-            printf("   \\_             _/       \n");
-            printf("     \\_         _/         \n");
-            printf("       \\_______/           \n");
-        }
+        adicionapalavra();
+    } else {
+        desenhaforca();
+        printf("\nPuxa vida! Voce foi enforcado!\n");
+        printf("A palavra era **%s**\n", palavrasecreta);
 
-    if(jogar_de_novo()) goto JOGAR_DE_NOVO;
+        printf("    _______________         \n");
+        printf("   /               \\       \n");
+        printf("  /                 \\      \n");
+        printf("//                   \\/\\  \n");
+        printf("\\|   XXXX     XXXX   | /   \n");
+        printf(" |   XXXX     XXXX   |/     \n");
+        printf(" |   XXX       XXX   |      \n");
+        printf(" |                   |      \n");
+        printf(" \\__      XXX      __/     \n");
+        printf("   |\\     XXX     /|       \n");
+        printf("   | |           | |        \n");
+        printf("   | I I I I I I I |        \n");
+        printf("   |  I I I I I I  |        \n");
+        printf("   \\_             _/       \n");
+        printf("     \\_         _/         \n");
+        printf("       \\_______/           \n");
+    }
+
+    if(jogar_de_novo()) goto JOGAR;
 }
